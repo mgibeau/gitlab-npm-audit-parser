@@ -1,0 +1,24 @@
+{
+  "name": "gitlab-npm-audit-parser",
+  "version": "1.0.0",
+  "description": "NPM Audit parser for GitLab dependency scanning",
+  "main": "parse.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mgibeau/gitlab-npm-audit-parser.git"
+  },
+  "keywords": [
+    "gitlab"
+  ],
+  "author": "Maxime Gibeau",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.18.0"
+  }
+}
