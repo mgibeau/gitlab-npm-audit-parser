@@ -10,13 +10,11 @@ var chunks = [];
 
 program
   .version(version)
-  // .usage('[options] <file ...>')
   .option('-o, --out <path>', 'output filename, defaults to gl-dependency-scanning-report.json')
   .parse(process.argv);
 
 var filename = program.out || 'gl-dependency-scanning-report.json';
 
-// stdin.resume();
 stdin.setEncoding('utf8');
 
 stdin.on('data', function (chunk) {
