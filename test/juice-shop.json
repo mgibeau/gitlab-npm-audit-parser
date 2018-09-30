@@ -1,0 +1,563 @@
+{
+  "actions": [
+    {
+      "action": "install",
+      "module": "express-jwt",
+      "target": "5.3.1",
+      "isMajor": true,
+      "resolves": [
+        {
+          "id": 17,
+          "path": "express-jwt>jsonwebtoken",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 88,
+          "path": "express-jwt>jsonwebtoken>jws",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 658,
+          "path": "express-jwt>jsonwebtoken>jws>base64url",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 658,
+          "path": "express-jwt>jsonwebtoken>jws>jwa>base64url",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 532,
+          "path": "express-jwt>jsonwebtoken>moment",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 55,
+          "path": "express-jwt>jsonwebtoken>moment",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "install",
+      "module": "sanitize-html",
+      "target": "1.19.1",
+      "isMajor": false,
+      "resolves": [
+        {
+          "id": 577,
+          "path": "sanitize-html>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 135,
+          "path": "sanitize-html",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 154,
+          "path": "sanitize-html",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "hoek",
+      "resolves": [
+        {
+          "id": 566,
+          "path": "codeclimate-test-reporter>request>hawk>boom>hoek",
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 566,
+          "path": "codeclimate-test-reporter>request>hawk>cryptiles>boom>hoek",
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 566,
+          "path": "codeclimate-test-reporter>request>hawk>hoek",
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 566,
+          "path": "codeclimate-test-reporter>request>hawk>sntp>hoek",
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "tunnel-agent",
+      "resolves": [
+        {
+          "id": 598,
+          "path": "codeclimate-test-reporter>request>tunnel-agent",
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    }
+  ],
+  "advisories": {
+    "17": {
+      "findings": [
+        {
+          "version": "0.1.0",
+          "paths": [
+            "express-jwt>jsonwebtoken"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 17,
+      "created": "2015-10-17T19:41:46.382Z",
+      "updated": "2018-02-23T00:47:19.284Z",
+      "deleted": null,
+      "title": "Verification Bypass",
+      "found_by": {
+        "name": "Tim McLean"
+      },
+      "reported_by": {
+        "name": "Tim McLean"
+      },
+      "module_name": "jsonwebtoken",
+      "cves": [
+        "CVE-2015-9235"
+      ],
+      "vulnerable_versions": "<4.2.2",
+      "patched_versions": ">=4.2.2",
+      "overview": "Versions 4.2.1 and earlier of `jsonwebtoken` are affected by a verification bypass vulnerability. This is a result of weak validation of the JWT algorithm type, occuring when an attacker is allowed to arbitrarily specify the JWT algorithm.\n\n",
+      "recommendation": "Update to version 4.2.2 or later.",
+      "references": "- [1] https://github.com/auth0/node-jsonwebtoken/commit/1bb584bc382295eeb7ee8c4452a673a77a68b687\n- https://www.timmclean.net/2015/02/25/jwt-alg-none.html\n- https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/",
+      "access": "public",
+      "severity": "critical",
+      "cwe": "CWE-287",
+      "metadata": {
+        "module_type": "Network.Library",
+        "exploitability": 4,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/17"
+    },
+    "55": {
+      "findings": [
+        {
+          "version": "2.0.0",
+          "paths": [
+            "express-jwt>jsonwebtoken>moment"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 55,
+      "created": "2015-10-26T23:19:57.916Z",
+      "updated": "2018-02-26T20:01:56.207Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Adam Baldwin"
+      },
+      "reported_by": {
+        "name": "Adam Baldwin"
+      },
+      "module_name": "moment",
+      "cves": [
+        "CVE-2016-4055"
+      ],
+      "vulnerable_versions": "<2.11.2",
+      "patched_versions": ">=2.11.2",
+      "overview": "Versions of `moment` prior to 2.11.2 are affected by a regular expression denial of service vulnerability. The vulnerability is triggered when arbitrary user input is passed into `moment.duration()`.\n\n\n## Proof of concept\n```\nvar moment = require('moment');\n\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\n\nfor (i=20000;i<=10000000;i=i+10000) {\n    console.log(\"COUNT: \" + i);\n    var str = '-' + genstr(i, '1')\n    console.log(\"LENGTH: \" + str.length);\n    var start = process.hrtime();\n    moment.duration(str)\n\n    var end = process.hrtime(start);\n    console.log(end);\n}\n```\n\n### Results\n```\n$ node moment.js\nCOUNT: 20000\nLENGTH: 20002\n[ 0, 618931029 ]\nCOUNT: 30001\nLENGTH: 30003\n[ 1, 401413894 ]\nCOUNT: 40002\nLENGTH: 40004\n[ 2, 437075303 ]\nCOUNT: 50003\nLENGTH: 50005\n[ 3, 824664804 ]\nCOUNT: 60004\nLENGTH: 60006\n[ 5, 651335262 ]\n```",
+      "recommendation": "Please update to version 2.11.2 or later. ",
+      "references": "",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 3,
+        "affected_components": "Internal::Code::Method::duration([*])"
+      },
+      "url": "https://npmjs.com/advisories/55"
+    },
+    "88": {
+      "findings": [
+        {
+          "version": "0.2.6",
+          "paths": [
+            "express-jwt>jsonwebtoken>jws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 88,
+      "created": "2016-03-22T16:50:45.816Z",
+      "updated": "2018-02-27T21:27:57.730Z",
+      "deleted": null,
+      "title": "Forgeable Public/Private Tokens",
+      "found_by": {
+        "name": "Brian Brennan and Tim McLean"
+      },
+      "reported_by": {
+        "name": "Brian Brennan and Tim McLean"
+      },
+      "module_name": "jws",
+      "cves": [
+        "CVE-2016-1000223"
+      ],
+      "vulnerable_versions": "<3.0.0",
+      "patched_versions": ">=3.0.0",
+      "overview": "Affected versions of the `jws` package allow users to select what algorithm the server will use to verify a provided JWT. A malicious actor can use this behaviour to arbitrarily modify the contents of a JWT while still passing verification. For the common use case of the JWT as a bearer token, the end result is a complete authentication bypass with minimal effort.\n\n",
+      "recommendation": "Update to version 3.0.0 or later.",
+      "references": "[Auth0 - Critical Vulnerabilities in JWT Libraries](https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/)\n[Commit #585d0e1](https://github.com/brianloveswords/node-jws/commit/585d0e1e97b6747c10cf5b7689ccc5618a89b299#diff-4ac32a78649ca5bdd8e0ba38b7006a1e)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-310",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 7,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/88"
+    },
+    "135": {
+      "findings": [
+        {
+          "version": "1.4.2",
+          "paths": [
+            "sanitize-html"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 135,
+      "created": "2016-08-01T16:36:58.000Z",
+      "updated": "2018-03-02T20:44:52.724Z",
+      "deleted": null,
+      "title": "Cross-Site Scripting",
+      "found_by": {
+        "name": "Björn Kimminich"
+      },
+      "reported_by": {
+        "name": "Björn Kimminich"
+      },
+      "module_name": "sanitize-html",
+      "cves": [
+        "CVE-2016-1000237"
+      ],
+      "vulnerable_versions": "<=1.4.2",
+      "patched_versions": ">=1.4.3",
+      "overview": "Affected versions of `sanitize-html` do not sanitize input recursively, which may allow an attacker to execute arbitrary Javascript.",
+      "recommendation": "Update to version 1.4.3 or later.",
+      "references": "[Issue #29](https://github.com/punkave/sanitize-html/issues/29)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-79",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/135"
+    },
+    "154": {
+      "findings": [
+        {
+          "version": "1.4.2",
+          "paths": [
+            "sanitize-html"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 154,
+      "created": "2016-10-27T16:25:30.000Z",
+      "updated": "2018-03-02T22:35:57.628Z",
+      "deleted": null,
+      "title": "Cross Site Scripting",
+      "found_by": {
+        "name": "Andrew Krasichkov"
+      },
+      "reported_by": {
+        "name": "Andrew Krasichkov"
+      },
+      "module_name": "sanitize-html",
+      "cves": [
+        "CVE-2017-16016"
+      ],
+      "vulnerable_versions": "<=1.11.1",
+      "patched_versions": ">=1.11.4",
+      "overview": "Affected versions of `sanitize-html` are vulnerable to cross-site scripting when allowedTags includes at least one `nonTextTag`.\n\n## Proof of Concept\n\n```\nvar sanitizeHtml = require('sanitize-html');\n\nvar dirty = '!<textarea>&lt;/textarea&gt;<svg/onload=prompt`xs`&gt;</textarea>!';\nvar clean = sanitizeHtml(dirty, {\n    allowedTags: [ 'textarea' ]\n});\n\nconsole.log(clean);\n\n// !<textarea></textarea><svg/onload=prompt`xs`></textarea>!\n```",
+      "recommendation": "Update to version 1.11.4 or later.",
+      "references": "[Issue #100](https://github.com/punkave/sanitize-html/issues/100)\n[Commit #5d205a1](https://github.com/punkave/sanitize-html/commit/5d205a1005ba0df80e21d8c64a15bb3accdb2403))))\n[Sanitize-html - nonTextTags](https://npmjs.com/package/sanitize-html#discarding-the-entire-contents-of-a-disallowed-tag)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-725",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/154"
+    },
+    "532": {
+      "findings": [
+        {
+          "version": "2.0.0",
+          "paths": [
+            "express-jwt>jsonwebtoken>moment"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 532,
+      "created": "2017-09-21T20:40:00.889Z",
+      "updated": "2018-04-09T00:31:11.585Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "moment",
+      "cves": [],
+      "vulnerable_versions": "<2.19.3",
+      "patched_versions": ">=2.19.3",
+      "overview": "Affected versions of `moment` are vulnerable to a low severity regular expression denial of service when parsing dates as strings.",
+      "recommendation": "Update to version 2.19.3 or later.",
+      "references": "[Issue #4163](https://github.com/moment/moment/issues/4163)\n[PR #4326](https://github.com/moment/moment/pull/4326)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/532"
+    },
+    "566": {
+      "findings": [
+        {
+          "version": "2.16.3",
+          "paths": [
+            "codeclimate-test-reporter>request>hawk>boom>hoek",
+            "codeclimate-test-reporter>request>hawk>cryptiles>boom>hoek",
+            "codeclimate-test-reporter>request>hawk>hoek",
+            "codeclimate-test-reporter>request>hawk>sntp>hoek"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 566,
+      "created": "2018-04-20T21:25:58.421Z",
+      "updated": "2018-04-20T21:25:58.421Z",
+      "deleted": null,
+      "title": "Prototype pollution",
+      "found_by": {
+        "name": "HoLyVieR"
+      },
+      "reported_by": {
+        "name": "HoLyVieR"
+      },
+      "module_name": "hoek",
+      "cves": [],
+      "vulnerable_versions": "<= 4.2.0 || >= 5.0.0 < 5.0.3",
+      "patched_versions": "> 4.2.0 < 5.0.0 || >= 5.0.3",
+      "overview": "Versions of `hoek` prior to 4.2.1 and 5.0.3 are vulnerable to prototype pollution.\n\nThe `merge` function, and the `applyToDefaults` and `applyToDefaultsWithShallow` functions which leverage `merge` behind the scenes, are vulnerable to a prototype pollution attack when provided an _unvalidated_ payload created from a JSON string containing the `__proto__` property.\n\nThis can be demonstrated like so:\n\n```javascript\nvar Hoek = require('hoek');\nvar malicious_payload = '{\"__proto__\":{\"oops\":\"It works !\"}}';\n\nvar a = {};\nconsole.log(\"Before : \" + a.oops);\nHoek.merge({}, JSON.parse(malicious_payload));\nconsole.log(\"After : \" + a.oops);\n```\n\nThis type of attack can be used to overwrite existing properties causing a potential denial of service.",
+      "recommendation": "Update to version 4.2.1, 5.0.3 or later.",
+      "references": "",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/566"
+    },
+    "577": {
+      "findings": [
+        {
+          "version": "2.4.2",
+          "paths": [
+            "sanitize-html>lodash"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 577,
+      "created": "2018-04-24T14:27:02.796Z",
+      "updated": "2018-04-24T14:27:13.049Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "name": "Olivier Arteau (HoLyVieR)"
+      },
+      "reported_by": {
+        "name": "Olivier Arteau (HoLyVieR)"
+      },
+      "module_name": "lodash",
+      "cves": [
+        "CVE-2018-3721"
+      ],
+      "vulnerable_versions": "<4.17.5",
+      "patched_versions": ">=4.17.5",
+      "overview": "Versions of `lodash` before 4.17.5 are vulnerable to prototype pollution. \n\nThe vulnerable functions are 'defaultsDeep', 'merge', and 'mergeWith' which allow a malicious user to modify the prototype of `Object` via `__proto__` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "Update to version 4.17.5 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/310443)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 1,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/577"
+    },
+    "598": {
+      "findings": [
+        {
+          "version": "0.4.3",
+          "paths": [
+            "codeclimate-test-reporter>request>tunnel-agent"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 598,
+      "created": "2018-04-24T20:30:16.099Z",
+      "updated": "2018-04-24T20:31:15.816Z",
+      "deleted": null,
+      "title": "Memory Exposure",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "tunnel-agent",
+      "cves": [],
+      "vulnerable_versions": "<0.6.0",
+      "patched_versions": ">=0.6.0",
+      "overview": "Versions of `tunnel-agent` before 0.6.0 are vulnerable to memory exposure.\n\nThis is exploitable if user supplied input is provided to the auth value and is a number.\n\nProof-of-concept:\n```js\nrequire('request')({\n  method: 'GET',\n  uri: 'http://www.example.com',\n  tunnel: true,\n  proxy:{\n    protocol: 'http:',\n    host:'127.0.0.1',\n    port:8080,\n    auth:USERSUPPLIEDINPUT // number\n  }\n});\n```",
+      "recommendation": "Update to version 0.6.0 or later.",
+      "references": "- [GitHub Commit #9ca95ec](https://github.com/request/tunnel-agent/commit/9ca95ec7219daface8a6fc2674000653de0922c0)\n- [Proof of Concept](https://gist.github.com/ChALkeR/fd6b2c445834244e7d440a043f9d2ff4)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-20",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/598"
+    },
+    "658": {
+      "findings": [
+        {
+          "version": "0.0.6",
+          "paths": [
+            "express-jwt>jsonwebtoken>jws>base64url",
+            "express-jwt>jsonwebtoken>jws>jwa>base64url"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 658,
+      "created": "2018-05-16T19:16:37.120Z",
+      "updated": "2018-05-16T19:17:38.115Z",
+      "deleted": null,
+      "title": "Out-of-bounds Read",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "base64url",
+      "cves": [],
+      "vulnerable_versions": "<3.0.0",
+      "patched_versions": ">=3.0.0",
+      "overview": "Versions of `base64url` before 3.0.0 are vulnerable to to out-of-bounds reads as it allocates uninitialized Buffers when number is passed in input on Node.js 4.x and below.",
+      "recommendation": "Update to version 3.0.0 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/321687)\n- [PR #25](https://github.com/brianloveswords/base64url/pull/25\")",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-125",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/658"
+    }
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 2,
+      "moderate": 10,
+      "high": 1,
+      "critical": 1
+    },
+    "dependencies": 2007,
+    "devDependencies": 25169,
+    "optionalDependencies": 900,
+    "totalDependencies": 27491
+  },
+  "runId": "7b6c8831-09df-45c3-bbb4-b4012c14f2fd"
+}

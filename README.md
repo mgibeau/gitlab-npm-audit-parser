@@ -1,8 +1,20 @@
 # GitLab parser for NPM Audit
 
-## How to use
 ```
-npm audit | ./parser.js
+Usage: parse [options]
+
+Options:
+
+  -V, --version     output the version number
+  -o, --out <path>  output filename, defaults to gl-dependency-scanning-report.json
+  -h, --help        output usage information
 ```
 
-## Configuration
+## How to use
+```
+npm audit --json | ./parse.js -o report.json
+```
+
+## Test
+
+`cat test/juice-shop.json | ./parse.js -o report.json`
