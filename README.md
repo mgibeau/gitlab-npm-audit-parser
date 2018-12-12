@@ -1,7 +1,7 @@
 # GitLab parser for NPM Audit
 
 ```
-Usage: parse [options]
+Usage: gitlab-npm-audit-parser [options]
 
 Options:
 
@@ -11,8 +11,24 @@ Options:
 ```
 
 ## How to use
+
+Install this package.
+
 ```
-npm audit --json | ./parse.js -o report.json
+npm install --save-dev gitlab-npm-audit-parser
+```
+
+Add the following job to _.gitlab-ci.yml_
+
+```yaml
+dependency scanning:
+  image: node:10-alpine
+  script:
+    - npm ci
+    - npm audit --json | npx gitlab-npm-audit-parser -o gl-dependency-scanning.json
+  artifacts:
+    reports:
+      dependency_scanning: gl-dependency-scanning.json
 ```
 
 ## Test
