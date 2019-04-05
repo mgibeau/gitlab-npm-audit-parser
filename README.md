@@ -1,5 +1,7 @@
 # GitLab parser for NPM Audit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mgibeau/gitlab-npm-audit-parser.svg)](https://greenkeeper.io/)
+
 ```
 Usage: gitlab-npm-audit-parser [options]
 
