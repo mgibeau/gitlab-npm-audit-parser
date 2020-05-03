@@ -22,7 +22,7 @@ stdin.on('data', function (chunk) {
 });
 
 stdin.on('end', function () {
-  var inputJSON = chunks.join(),
+  var inputJSON = chunks.join(''),
       outputJSON = convert(inputJSON);
 
   fs.writeFile(filename, outputJSON, function(err) {
