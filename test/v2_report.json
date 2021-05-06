@@ -1,0 +1,840 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@nuxt/builder": {
+      "name": "@nuxt/builder",
+      "severity": "moderate",
+      "via": [
+        "@nuxt/webpack"
+      ],
+      "effects": [
+        "nuxt"
+      ],
+      "range": "2.12.0 - 2.14.12",
+      "nodes": [
+        "node_modules/@nuxt/builder"
+      ],
+      "fixAvailable": true
+    },
+    "@nuxt/webpack": {
+      "name": "@nuxt/webpack",
+      "severity": "moderate",
+      "via": [
+        "terser-webpack-plugin"
+      ],
+      "effects": [
+        "@nuxt/builder",
+        "nuxt"
+      ],
+      "range": "2.10.0 - 2.14.12",
+      "nodes": [
+        "node_modules/@nuxt/webpack"
+      ],
+      "fixAvailable": true
+    },
+    "@nuxtjs/axios": {
+      "name": "@nuxtjs/axios",
+      "severity": "high",
+      "via": [
+        "axios"
+      ],
+      "effects": [],
+      "range": "<=5.12.2",
+      "nodes": [
+        "node_modules/@nuxtjs/axios"
+      ],
+      "fixAvailable": {
+        "name": "@nuxtjs/axios",
+        "version": "5.13.1",
+        "isSemVerMajor": false
+      }
+    },
+    "avoya-component-library": {
+      "name": "avoya-component-library",
+      "severity": "high",
+      "via": [
+        "axios"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/avoya-component-library"
+      ],
+      "fixAvailable": false
+    },
+    "axios": {
+      "name": "axios",
+      "severity": "high",
+      "via": [
+        {
+          "source": 1594,
+          "name": "axios",
+          "dependency": "axios",
+          "title": "Server-Side Request Forgery",
+          "url": "https://npmjs.com/advisories/1594",
+          "severity": "high",
+          "range": "<0.21.1"
+        }
+      ],
+      "effects": [
+        "@nuxtjs/axios",
+        "avoya-component-library"
+      ],
+      "range": "<0.21.1",
+      "nodes": [
+        "node_modules/axios"
+      ],
+      "fixAvailable": false
+    },
+    "babel-jest": {
+      "name": "babel-jest",
+      "severity": "low",
+      "via": [
+        "babel-plugin-istanbul"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": "14.2.0-alpha.ca8bfb6e - 24.0.0-alpha.16",
+      "nodes": [
+        "node_modules/babel-jest"
+      ],
+      "fixAvailable": {
+        "name": "babel-jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "babel-plugin-istanbul": {
+      "name": "babel-plugin-istanbul",
+      "severity": "low",
+      "via": [
+        "test-exclude"
+      ],
+      "effects": [
+        "babel-jest",
+        "jest-runtime"
+      ],
+      "range": "<=5.0.0",
+      "nodes": [
+        "node_modules/babel-plugin-istanbul"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "braces": {
+      "name": "braces",
+      "severity": "low",
+      "via": [
+        {
+          "source": 786,
+          "name": "braces",
+          "dependency": "braces",
+          "title": "Regular Expression Denial of Service",
+          "url": "https://npmjs.com/advisories/786",
+          "severity": "low",
+          "range": "<2.3.1"
+        }
+      ],
+      "effects": [
+        "micromatch"
+      ],
+      "range": "<2.3.1",
+      "nodes": [
+        "node_modules/jest-config/node_modules/braces",
+        "node_modules/jest-haste-map/node_modules/braces",
+        "node_modules/jest-message-util/node_modules/braces",
+        "node_modules/jest-runtime/node_modules/braces",
+        "node_modules/jest/node_modules/braces",
+        "node_modules/test-exclude/node_modules/braces"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "cacache": {
+      "name": "cacache",
+      "severity": "moderate",
+      "via": [
+        "ssri"
+      ],
+      "effects": [
+        "terser-webpack-plugin"
+      ],
+      "range": "10.0.4 - 11.0.0 || 13.0.0 - 14.0.0",
+      "nodes": [
+        "node_modules/cacache"
+      ],
+      "fixAvailable": true
+    },
+    "elliptic": {
+      "name": "elliptic",
+      "severity": "moderate",
+      "via": [
+        {
+          "source": 1648,
+          "name": "elliptic",
+          "dependency": "elliptic",
+          "title": "Use of a Broken or Risky Cryptographic Algorithm",
+          "url": "https://npmjs.com/advisories/1648",
+          "severity": "moderate",
+          "range": "<6.5.4"
+        }
+      ],
+      "effects": [],
+      "range": "<6.5.4",
+      "nodes": [
+        "node_modules/elliptic"
+      ],
+      "fixAvailable": true
+    },
+    "exec-sh": {
+      "name": "exec-sh",
+      "severity": "high",
+      "via": [
+        "merge"
+      ],
+      "effects": [
+        "sane",
+        "watch"
+      ],
+      "range": "<=0.3.1",
+      "nodes": [
+        "node_modules/exec-sh"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "expect": {
+      "name": "expect",
+      "severity": "low",
+      "via": [
+        "jest-message-util"
+      ],
+      "effects": [
+        "jest-jasmine2"
+      ],
+      "range": "21.0.0-beta.1 - 22.4.3 || 23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/expect"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "gsap": {
+      "name": "gsap",
+      "severity": "high",
+      "via": [
+        {
+          "source": 1608,
+          "name": "gsap",
+          "dependency": "gsap",
+          "title": "Prototype Pollution",
+          "url": "https://npmjs.com/advisories/1608",
+          "severity": "high",
+          "range": "<3.6.0"
+        }
+      ],
+      "effects": [],
+      "range": "<3.6.0",
+      "nodes": [
+        "node_modules/gsap"
+      ],
+      "fixAvailable": true
+    },
+    "ini": {
+      "name": "ini",
+      "severity": "low",
+      "via": [
+        {
+          "source": 1589,
+          "name": "ini",
+          "dependency": "ini",
+          "title": "Prototype Pollution",
+          "url": "https://npmjs.com/advisories/1589",
+          "severity": "low",
+          "range": "<1.3.6"
+        }
+      ],
+      "effects": [
+        "npm"
+      ],
+      "range": "<1.3.6",
+      "nodes": [
+        "node_modules/ini",
+        "node_modules/npm/node_modules/ini"
+      ],
+      "fixAvailable": true
+    },
+    "jest": {
+      "name": "jest",
+      "severity": "low",
+      "via": [
+        "jest-cli"
+      ],
+      "effects": [],
+      "range": "18.5.0-alpha.7da3df39 - 22.4.4 || 23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/jest"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-cli": {
+      "name": "jest-cli",
+      "severity": "low",
+      "via": [
+        "jest-config",
+        "jest-message-util",
+        "jest-runner",
+        "jest-runtime",
+        "jest-snapshot",
+        "micromatch",
+        "yargs"
+      ],
+      "effects": [
+        "jest"
+      ],
+      "range": "12.1.1-alpha.2935e14d || 12.1.2-alpha.6230044c - 24.8.0",
+      "nodes": [
+        "node_modules/jest/node_modules/jest-cli"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-config": {
+      "name": "jest-config",
+      "severity": "low",
+      "via": [
+        "babel-jest",
+        "jest-jasmine2",
+        "jest-util",
+        "micromatch"
+      ],
+      "effects": [
+        "jest-cli",
+        "jest-runner",
+        "jest-runtime"
+      ],
+      "range": "18.5.0-alpha.7da3df39 - 24.0.0-alpha.16",
+      "nodes": [
+        "node_modules/jest-config"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-environment-jsdom": {
+      "name": "jest-environment-jsdom",
+      "severity": "low",
+      "via": [
+        "jest-util"
+      ],
+      "effects": [],
+      "range": "18.5.0-alpha.7da3df39 - 22.4.3 || 23.4.0",
+      "nodes": [
+        "node_modules/jest-environment-jsdom"
+      ],
+      "fixAvailable": true
+    },
+    "jest-environment-node": {
+      "name": "jest-environment-node",
+      "severity": "low",
+      "via": [
+        "jest-util"
+      ],
+      "effects": [],
+      "range": "18.5.0-alpha.7da3df39 - 22.4.3 || 23.4.0",
+      "nodes": [
+        "node_modules/jest-environment-node"
+      ],
+      "fixAvailable": true
+    },
+    "jest-haste-map": {
+      "name": "jest-haste-map",
+      "severity": "high",
+      "via": [
+        "micromatch",
+        "sane"
+      ],
+      "effects": [
+        "jest-runtime"
+      ],
+      "range": "16.1.0-alpha.691b0e22 - 24.0.0",
+      "nodes": [
+        "node_modules/jest-haste-map"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-jasmine2": {
+      "name": "jest-jasmine2",
+      "severity": "low",
+      "via": [
+        "expect",
+        "jest-message-util",
+        "jest-snapshot",
+        "jest-util"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": "18.5.0-alpha.7da3df39 - 22.4.4 || 23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/jest-jasmine2"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-message-util": {
+      "name": "jest-message-util",
+      "severity": "low",
+      "via": [
+        "micromatch"
+      ],
+      "effects": [
+        "expect",
+        "jest-cli",
+        "jest-jasmine2",
+        "jest-runner",
+        "jest-runtime",
+        "jest-snapshot",
+        "jest-util"
+      ],
+      "range": "18.5.0-alpha.7da3df39 - 23.1.0 || 23.4.0 - 24.0.0-alpha.16",
+      "nodes": [
+        "node_modules/jest-message-util"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-resolve-dependencies": {
+      "name": "jest-resolve-dependencies",
+      "severity": "low",
+      "via": [
+        "jest-snapshot"
+      ],
+      "effects": [],
+      "range": "23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/jest-resolve-dependencies"
+      ],
+      "fixAvailable": true
+    },
+    "jest-runner": {
+      "name": "jest-runner",
+      "severity": "low",
+      "via": [
+        "jest-config",
+        "jest-message-util"
+      ],
+      "effects": [
+        "jest-cli"
+      ],
+      "range": "21.0.0-alpha.1 - 22.4.4 || 23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/jest-runner"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-runtime": {
+      "name": "jest-runtime",
+      "severity": "low",
+      "via": [
+        "babel-plugin-istanbul",
+        "jest-config",
+        "jest-haste-map",
+        "jest-message-util",
+        "jest-util",
+        "micromatch",
+        "yargs"
+      ],
+      "effects": [
+        "jest-cli"
+      ],
+      "range": "12.1.1-alpha.2935e14d - 24.8.0",
+      "nodes": [
+        "node_modules/jest-runtime"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-snapshot": {
+      "name": "jest-snapshot",
+      "severity": "low",
+      "via": [
+        "jest-message-util"
+      ],
+      "effects": [
+        "jest-cli",
+        "jest-jasmine2",
+        "jest-resolve-dependencies"
+      ],
+      "range": "23.4.0 - 23.6.0",
+      "nodes": [
+        "node_modules/jest-snapshot"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "jest-util": {
+      "name": "jest-util",
+      "severity": "low",
+      "via": [
+        "jest-message-util"
+      ],
+      "effects": [
+        "jest-config",
+        "jest-environment-jsdom",
+        "jest-environment-node",
+        "jest-jasmine2",
+        "jest-runtime"
+      ],
+      "range": "18.5.0-alpha.7da3df39 - 22.4.3 || 23.4.0",
+      "nodes": [
+        "node_modules/jest-util"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "merge": {
+      "name": "merge",
+      "severity": "high",
+      "via": [
+        {
+          "source": 1666,
+          "name": "merge",
+          "dependency": "merge",
+          "title": "Prototype Pollution",
+          "url": "https://npmjs.com/advisories/1666",
+          "severity": "high",
+          "range": "<2.1.1"
+        }
+      ],
+      "effects": [
+        "exec-sh"
+      ],
+      "range": "<2.1.1",
+      "nodes": [
+        "node_modules/merge"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "micromatch": {
+      "name": "micromatch",
+      "severity": "low",
+      "via": [
+        "braces"
+      ],
+      "effects": [
+        "jest-cli",
+        "jest-config",
+        "jest-haste-map",
+        "jest-message-util",
+        "jest-runtime",
+        "test-exclude"
+      ],
+      "range": "0.2.0 - 2.3.11",
+      "nodes": [
+        "node_modules/jest-config/node_modules/micromatch",
+        "node_modules/jest-haste-map/node_modules/micromatch",
+        "node_modules/jest-message-util/node_modules/micromatch",
+        "node_modules/jest-runtime/node_modules/micromatch",
+        "node_modules/jest/node_modules/micromatch",
+        "node_modules/test-exclude/node_modules/micromatch"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "npm": {
+      "name": "npm",
+      "severity": "moderate",
+      "via": [
+        "ini",
+        "npm-user-validate",
+        "ssri"
+      ],
+      "effects": [],
+      "range": "<=6.14.12 || 7.0.0-beta.0 - 7.4.3",
+      "nodes": [
+        "node_modules/npm"
+      ],
+      "fixAvailable": true
+    },
+    "npm-user-validate": {
+      "name": "npm-user-validate",
+      "severity": "low",
+      "via": [
+        {
+          "source": 1572,
+          "name": "npm-user-validate",
+          "dependency": "npm-user-validate",
+          "title": "Regular Expression Denial of Service",
+          "url": "https://npmjs.com/advisories/1572",
+          "severity": "low",
+          "range": "< 1.0.1"
+        }
+      ],
+      "effects": [
+        "npm"
+      ],
+      "range": "< 1.0.1",
+      "nodes": [
+        "node_modules/npm/node_modules/npm-user-validate"
+      ],
+      "fixAvailable": true
+    },
+    "nuxt": {
+      "name": "nuxt",
+      "severity": "moderate",
+      "via": [
+        "@nuxt/builder",
+        "@nuxt/webpack"
+      ],
+      "effects": [],
+      "range": "2.10.0 - 2.14.12",
+      "nodes": [
+        "node_modules/nuxt"
+      ],
+      "fixAvailable": true
+    },
+    "sane": {
+      "name": "sane",
+      "severity": "high",
+      "via": [
+        "exec-sh",
+        "watch"
+      ],
+      "effects": [
+        "jest-haste-map"
+      ],
+      "range": "1.0.4 - 4.0.2",
+      "nodes": [
+        "node_modules/sane"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "ssri": {
+      "name": "ssri",
+      "severity": "moderate",
+      "via": [
+        {
+          "source": 565,
+          "name": "ssri",
+          "dependency": "ssri",
+          "title": "Regular Expression Denial of Service",
+          "url": "https://npmjs.com/advisories/565",
+          "severity": "moderate",
+          "range": ">=5.2.2 <6.0.2 || >=7.0.0 <8.0.1"
+        }
+      ],
+      "effects": [
+        "cacache",
+        "npm"
+      ],
+      "range": "5.2.2 - 6.0.1 || 7.0.0 - 8.0.0",
+      "nodes": [
+        "node_modules/npm/node_modules/ssri",
+        "node_modules/ssri",
+        "node_modules/webpack/node_modules/ssri"
+      ],
+      "fixAvailable": true
+    },
+    "terser-webpack-plugin": {
+      "name": "terser-webpack-plugin",
+      "severity": "moderate",
+      "via": [
+        "cacache"
+      ],
+      "effects": [
+        "@nuxt/webpack"
+      ],
+      "range": "2.1.1 - 2.3.8",
+      "nodes": [
+        "node_modules/terser-webpack-plugin"
+      ],
+      "fixAvailable": true
+    },
+    "test-exclude": {
+      "name": "test-exclude",
+      "severity": "low",
+      "via": [
+        "micromatch"
+      ],
+      "effects": [
+        "babel-plugin-istanbul"
+      ],
+      "range": "<=4.2.3",
+      "nodes": [
+        "node_modules/test-exclude"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "watch": {
+      "name": "watch",
+      "severity": "high",
+      "via": [
+        "exec-sh"
+      ],
+      "effects": [
+        "sane"
+      ],
+      "range": ">=0.14.0",
+      "nodes": [
+        "node_modules/watch"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "y18n": {
+      "name": "y18n",
+      "severity": "high",
+      "via": [
+        {
+          "source": 1654,
+          "name": "y18n",
+          "dependency": "y18n",
+          "title": "Prototype Pollution",
+          "url": "https://npmjs.com/advisories/1654",
+          "severity": "high",
+          "range": "<3.2.2||=4.0.0||>=5.0.0 <5.0.5"
+        }
+      ],
+      "effects": [],
+      "range": "<3.2.2||=4.0.0||>=5.0.0 <5.0.5",
+      "nodes": [
+        "node_modules/jest-runtime/node_modules/y18n",
+        "node_modules/jest/node_modules/y18n",
+        "node_modules/npm/node_modules/y18n",
+        "node_modules/y18n"
+      ],
+      "fixAvailable": true
+    },
+    "yargs": {
+      "name": "yargs",
+      "severity": "low",
+      "via": [
+        "yargs-parser"
+      ],
+      "effects": [
+        "jest-cli",
+        "jest-runtime"
+      ],
+      "range": "4.0.0-alpha1 - 12.0.5 || 14.1.0 || 15.0.0 - 15.2.0",
+      "nodes": [
+        "node_modules/jest-runtime/node_modules/yargs",
+        "node_modules/jest/node_modules/yargs"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    },
+    "yargs-parser": {
+      "name": "yargs-parser",
+      "severity": "low",
+      "via": [
+        {
+          "source": 1500,
+          "name": "yargs-parser",
+          "dependency": "yargs-parser",
+          "title": "Prototype Pollution",
+          "url": "https://npmjs.com/advisories/1500",
+          "severity": "low",
+          "range": "<13.1.2 || >=14.0.0 <15.0.1 || >=16.0.0 <18.1.2"
+        }
+      ],
+      "effects": [
+        "yargs"
+      ],
+      "range": "<=13.1.1 || 14.0.0 - 15.0.0 || 16.0.0 - 18.1.1",
+      "nodes": [
+        "node_modules/jest-runtime/node_modules/yargs-parser",
+        "node_modules/jest/node_modules/yargs-parser"
+      ],
+      "fixAvailable": {
+        "name": "jest",
+        "version": "26.6.3",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 22,
+      "moderate": 8,
+      "high": 10,
+      "critical": 0,
+      "total": 40
+    },
+    "dependencies": {
+      "prod": 2014,
+      "dev": 541,
+      "optional": 30,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 2583
+    }
+  }
+}

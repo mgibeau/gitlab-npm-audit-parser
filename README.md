@@ -33,4 +33,8 @@ dependency scanning:
 
 ## Test
 
-`cat test/juice-shop.json | ./parse.js -o report.json`
+### V1 Report
+`cat test/v1_report.json | ./parse.js -o report.json`
+
+### V2 Report
+`cat test/v1_report.json | ./parse.js -o report.json`

@@ -1,6 +1,6 @@
 {
-  "name": "gitlab-npm-audit-parser",
-  "version": "1.0.4",
+  "name": "@elpete/gitlab-npm-audit-parser",
+  "version": "1.1.0",
   "description": "NPM Audit parser for GitLab dependency scanning",
   "bin": "parse.js",
   "main": "parse.js",
@@ -12,12 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mgibeau/gitlab-npm-audit-parser.git"
+    "url": "git@github.com:elpete/gitlab-npm-audit-parser.git"
   },
   "keywords": [
     "gitlab"
   ],
   "author": "Maxime Gibeau",
+  "contributors": [
+      {
+          "name": "Eric Peterson",
+          "email": "eric@elpete.com",
+          "url": "https://github.com/elpete"
+      }
+  ],
   "license": "MIT",
   "dependencies": {
     "commander": "^2.18.0"
