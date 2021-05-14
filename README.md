@@ -15,7 +15,7 @@ Options:
 Install this package.
 
 ```
-npm install --save-dev gitlab-npm-audit-parser
+npm install --save-dev @elpete/gitlab-npm-audit-parser
 ```
 
 Add the following job to _.gitlab-ci.yml_
@@ -33,8 +33,12 @@ dependency scanning:
 
 ## Test
 
+```sh
+$ npm test
+```
+
 ### V1 Report
 `cat test/v1_report.json | ./parse.js -o report.json`
 
 ### V2 Report
-`cat test/v1_report.json | ./parse.js -o report.json`
+`cat test/v2_report.json | ./parse.js -o report.json`

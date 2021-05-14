@@ -8,7 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:v1 && npm run test:v2",
+    "test:v1": "cat test/v1_report.json | ./parse.js -o GL-report.1.json && diff -q GL-report.1.json test/snapshot/GL-report.1.json && echo success!; rm GL-report.1.json",
+    "test:v2": "cat test/v2_report.json | ./parse.js -o GL-report.2.json && diff -q GL-report.2.json test/snapshot/GL-report.2.json && echo success!; rm GL-report.2.json"
   },
   "repository": {
     "type": "git",
@@ -19,11 +21,11 @@
   ],
   "author": "Maxime Gibeau",
   "contributors": [
-      {
-          "name": "Eric Peterson",
-          "email": "eric@elpete.com",
-          "url": "https://github.com/elpete"
-      }
+    {
+      "name": "Eric Peterson",
+      "email": "eric@elpete.com",
+      "url": "https://github.com/elpete"
+    }
   ],
   "license": "MIT",
   "dependencies": {

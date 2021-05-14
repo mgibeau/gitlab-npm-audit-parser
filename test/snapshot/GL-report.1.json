@@ -1,0 +1,510 @@
+{
+  "version": "1.0",
+  "vulnerabilities": [
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "jsonwebtoken",
+      "namespace": "jsonwebtoken",
+      "message": "Verification Bypass",
+      "cve": "package.jsonjsonwebtoken:cve_id:CVE-2015-9235",
+      "description": "Versions 4.2.1 and earlier of `jsonwebtoken` are affected by a verification bypass vulnerability. This is a result of weak validation of the JWT algorithm type, occuring when an attacker is allowed to arbitrarily specify the JWT algorithm.\n\n",
+      "severity": "Critical",
+      "fixedby": "Tim McLean",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "jsonwebtoken"
+          },
+          "version": "<4.2.2"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2015-9235",
+          "value": "CVE-2015-9235",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-9235"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-287",
+          "value": "CWE-287",
+          "url": "https://cwe.mitre.org/data/definitions/287.html"
+        }
+      ],
+      "solution": "Update to version 4.2.2 or later.",
+      "instances": [
+        {
+          "method": "express-jwt>jsonwebtoken"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/17"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "moment",
+      "namespace": "moment",
+      "message": "Regular Expression Denial of Service",
+      "cve": "package.jsonmoment:cve_id:CVE-2016-4055",
+      "description": "Versions of `moment` prior to 2.11.2 are affected by a regular expression denial of service vulnerability. The vulnerability is triggered when arbitrary user input is passed into `moment.duration()`.\n\n\n## Proof of concept\n```\nvar moment = require('moment');\n\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\n\nfor (i=20000;i<=10000000;i=i+10000) {\n    console.log(\"COUNT: \" + i);\n    var str = '-' + genstr(i, '1')\n    console.log(\"LENGTH: \" + str.length);\n    var start = process.hrtime();\n    moment.duration(str)\n\n    var end = process.hrtime(start);\n    console.log(end);\n}\n```\n\n### Results\n```\n$ node moment.js\nCOUNT: 20000\nLENGTH: 20002\n[ 0, 618931029 ]\nCOUNT: 30001\nLENGTH: 30003\n[ 1, 401413894 ]\nCOUNT: 40002\nLENGTH: 40004\n[ 2, 437075303 ]\nCOUNT: 50003\nLENGTH: 50005\n[ 3, 824664804 ]\nCOUNT: 60004\nLENGTH: 60006\n[ 5, 651335262 ]\n```",
+      "severity": "Moderate",
+      "fixedby": "Adam Baldwin",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "moment"
+          },
+          "version": "<2.11.2"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2016-4055",
+          "value": "CVE-2016-4055",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4055"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-400",
+          "value": "CWE-400",
+          "url": "https://cwe.mitre.org/data/definitions/400.html"
+        }
+      ],
+      "solution": "Please update to version 2.11.2 or later. ",
+      "instances": [
+        {
+          "method": "express-jwt>jsonwebtoken>moment"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/55"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "jws",
+      "namespace": "jws",
+      "message": "Forgeable Public/Private Tokens",
+      "cve": "package.jsonjws:cve_id:CVE-2016-1000223",
+      "description": "Affected versions of the `jws` package allow users to select what algorithm the server will use to verify a provided JWT. A malicious actor can use this behaviour to arbitrarily modify the contents of a JWT while still passing verification. For the common use case of the JWT as a bearer token, the end result is a complete authentication bypass with minimal effort.\n\n",
+      "severity": "High",
+      "fixedby": "Brian Brennan and Tim McLean",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "jws"
+          },
+          "version": "<3.0.0"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2016-1000223",
+          "value": "CVE-2016-1000223",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000223"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-310",
+          "value": "CWE-310",
+          "url": "https://cwe.mitre.org/data/definitions/310.html"
+        }
+      ],
+      "solution": "Update to version 3.0.0 or later.",
+      "instances": [
+        {
+          "method": "express-jwt>jsonwebtoken>jws"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/88"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "sanitize-html",
+      "namespace": "sanitize-html",
+      "message": "Cross-Site Scripting",
+      "cve": "package.jsonsanitize-html:cve_id:CVE-2016-1000237",
+      "description": "Affected versions of `sanitize-html` do not sanitize input recursively, which may allow an attacker to execute arbitrary Javascript.",
+      "severity": "Moderate",
+      "fixedby": "Björn Kimminich",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "sanitize-html"
+          },
+          "version": "<=1.4.2"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2016-1000237",
+          "value": "CVE-2016-1000237",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000237"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-79",
+          "value": "CWE-79",
+          "url": "https://cwe.mitre.org/data/definitions/79.html"
+        }
+      ],
+      "solution": "Update to version 1.4.3 or later.",
+      "instances": [
+        {
+          "method": "sanitize-html"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/135"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "sanitize-html",
+      "namespace": "sanitize-html",
+      "message": "Cross Site Scripting",
+      "cve": "package.jsonsanitize-html:cve_id:CVE-2017-16016",
+      "description": "Affected versions of `sanitize-html` are vulnerable to cross-site scripting when allowedTags includes at least one `nonTextTag`.\n\n## Proof of Concept\n\n```\nvar sanitizeHtml = require('sanitize-html');\n\nvar dirty = '!<textarea>&lt;/textarea&gt;<svg/onload=prompt`xs`&gt;</textarea>!';\nvar clean = sanitizeHtml(dirty, {\n    allowedTags: [ 'textarea' ]\n});\n\nconsole.log(clean);\n\n// !<textarea></textarea><svg/onload=prompt`xs`></textarea>!\n```",
+      "severity": "Moderate",
+      "fixedby": "Andrew Krasichkov",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "sanitize-html"
+          },
+          "version": "<=1.11.1"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2017-16016",
+          "value": "CVE-2017-16016",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-16016"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-725",
+          "value": "CWE-725",
+          "url": "https://cwe.mitre.org/data/definitions/725.html"
+        }
+      ],
+      "solution": "Update to version 1.11.4 or later.",
+      "instances": [
+        {
+          "method": "sanitize-html"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/154"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "moment",
+      "namespace": "moment",
+      "message": "Regular Expression Denial of Service",
+      "cve": "package.jsonmoment:cve_id:undefined",
+      "description": "Affected versions of `moment` are vulnerable to a low severity regular expression denial of service when parsing dates as strings.",
+      "severity": "Low",
+      "fixedby": "Cristian-Alexandru Staicu",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "moment"
+          },
+          "version": "<2.19.3"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "url": "https://nvd.nist.gov/vuln/detail/undefined"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-400",
+          "value": "CWE-400",
+          "url": "https://cwe.mitre.org/data/definitions/400.html"
+        }
+      ],
+      "solution": "Update to version 2.19.3 or later.",
+      "instances": [
+        {
+          "method": "express-jwt>jsonwebtoken>moment"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/532"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "hoek",
+      "namespace": "hoek",
+      "message": "Prototype pollution",
+      "cve": "package.jsonhoek:cve_id:undefined",
+      "description": "Versions of `hoek` prior to 4.2.1 and 5.0.3 are vulnerable to prototype pollution.\n\nThe `merge` function, and the `applyToDefaults` and `applyToDefaultsWithShallow` functions which leverage `merge` behind the scenes, are vulnerable to a prototype pollution attack when provided an _unvalidated_ payload created from a JSON string containing the `__proto__` property.\n\nThis can be demonstrated like so:\n\n```javascript\nvar Hoek = require('hoek');\nvar malicious_payload = '{\"__proto__\":{\"oops\":\"It works !\"}}';\n\nvar a = {};\nconsole.log(\"Before : \" + a.oops);\nHoek.merge({}, JSON.parse(malicious_payload));\nconsole.log(\"After : \" + a.oops);\n```\n\nThis type of attack can be used to overwrite existing properties causing a potential denial of service.",
+      "severity": "Moderate",
+      "fixedby": "HoLyVieR",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "hoek"
+          },
+          "version": "<= 4.2.0 || >= 5.0.0 < 5.0.3"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "url": "https://nvd.nist.gov/vuln/detail/undefined"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-471",
+          "value": "CWE-471",
+          "url": "https://cwe.mitre.org/data/definitions/471.html"
+        }
+      ],
+      "solution": "Update to version 4.2.1, 5.0.3 or later.",
+      "instances": [
+        {
+          "method": "codeclimate-test-reporter>request>hawk>boom>hoek"
+        },
+        {
+          "method": "codeclimate-test-reporter>request>hawk>cryptiles>boom>hoek"
+        },
+        {
+          "method": "codeclimate-test-reporter>request>hawk>hoek"
+        },
+        {
+          "method": "codeclimate-test-reporter>request>hawk>sntp>hoek"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/566"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "lodash",
+      "namespace": "lodash",
+      "message": "Prototype Pollution",
+      "cve": "package.jsonlodash:cve_id:CVE-2018-3721",
+      "description": "Versions of `lodash` before 4.17.5 are vulnerable to prototype pollution. \n\nThe vulnerable functions are 'defaultsDeep', 'merge', and 'mergeWith' which allow a malicious user to modify the prototype of `Object` via `__proto__` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "severity": "Low",
+      "fixedby": "Olivier Arteau (HoLyVieR)",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "lodash"
+          },
+          "version": "<4.17.5"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "name": "CVE-2018-3721",
+          "value": "CVE-2018-3721",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-471",
+          "value": "CWE-471",
+          "url": "https://cwe.mitre.org/data/definitions/471.html"
+        }
+      ],
+      "solution": "Update to version 4.17.5 or later.",
+      "instances": [
+        {
+          "method": "sanitize-html>lodash"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/577"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "tunnel-agent",
+      "namespace": "tunnel-agent",
+      "message": "Memory Exposure",
+      "cve": "package.jsontunnel-agent:cve_id:undefined",
+      "description": "Versions of `tunnel-agent` before 0.6.0 are vulnerable to memory exposure.\n\nThis is exploitable if user supplied input is provided to the auth value and is a number.\n\nProof-of-concept:\n```js\nrequire('request')({\n  method: 'GET',\n  uri: 'http://www.example.com',\n  tunnel: true,\n  proxy:{\n    protocol: 'http:',\n    host:'127.0.0.1',\n    port:8080,\n    auth:USERSUPPLIEDINPUT // number\n  }\n});\n```",
+      "severity": "Moderate",
+      "fixedby": "Сковорода Никита Андреевич",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "tunnel-agent"
+          },
+          "version": "<0.6.0"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "url": "https://nvd.nist.gov/vuln/detail/undefined"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-20",
+          "value": "CWE-20",
+          "url": "https://cwe.mitre.org/data/definitions/20.html"
+        }
+      ],
+      "solution": "Update to version 0.6.0 or later.",
+      "instances": [
+        {
+          "method": "codeclimate-test-reporter>request>tunnel-agent"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/598"
+        }
+      ]
+    },
+    {
+      "tool": "npm_audit",
+      "category": "dependency_scanning",
+      "name": "base64url",
+      "namespace": "base64url",
+      "message": "Out-of-bounds Read",
+      "cve": "package.jsonbase64url:cve_id:undefined",
+      "description": "Versions of `base64url` before 3.0.0 are vulnerable to to out-of-bounds reads as it allocates uninitialized Buffers when number is passed in input on Node.js 4.x and below.",
+      "severity": "Moderate",
+      "fixedby": "Сковорода Никита Андреевич",
+      "confidence": "High",
+      "scanner": {
+        "id": "npm_audit_advisories",
+        "name": "NPM Audit"
+      },
+      "location": {
+        "file": "package.json",
+        "dependency": {
+          "package": {
+            "name": "base64url"
+          },
+          "version": "<3.0.0"
+        }
+      },
+      "identifiers": [
+        {
+          "type": "cve_id",
+          "url": "https://nvd.nist.gov/vuln/detail/undefined"
+        },
+        {
+          "type": "cwe_id",
+          "name": "CWE-125",
+          "value": "CWE-125",
+          "url": "https://cwe.mitre.org/data/definitions/125.html"
+        }
+      ],
+      "solution": "Update to version 3.0.0 or later.",
+      "instances": [
+        {
+          "method": "express-jwt>jsonwebtoken>jws>base64url"
+        },
+        {
+          "method": "express-jwt>jsonwebtoken>jws>jwa>base64url"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://npmjs.com/advisories/658"
+        }
+      ]
+    }
+  ],
+  "remediations": []
+}

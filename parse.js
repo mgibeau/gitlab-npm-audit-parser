@@ -25,7 +25,7 @@ stdin.on('end', function () {
   var inputJSON = chunks.join(''),
       outputJSON = convert(inputJSON);
 
-  fs.writeFile(filename, outputJSON, function(err) {
+  fs.writeFile(filename, outputJSON+'\n', function(err) {
     if (err) {
       return console.log(err);
     }
