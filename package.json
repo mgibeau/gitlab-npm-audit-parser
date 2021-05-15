@@ -8,9 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run test:v1 && npm run test:v2",
-    "test:v1": "cat test/v1_report.json | ./parse.js -o GL-report.1.json && diff -q GL-report.1.json test/snapshot/GL-report.1.json && echo success!; rm GL-report.1.json",
-    "test:v2": "cat test/v2_report.json | ./parse.js -o GL-report.2.json && diff -q GL-report.2.json test/snapshot/GL-report.2.json && echo success!; rm GL-report.2.json"
+    "test": "npm run --silent test:v1; npm run --silent test:v2;",
+    "test:v1": "printf 'v1: '; cat test/v1_report.json | ./parse.js -o GL-report.1.json >/dev/null && diff -q GL-report.1.json test/snapshot/GL-report.1.json && echo success!; RC=$?; rm GL-report.1.json; exit $RC",
+    "test:v2": "printf 'v2: '; cat test/v2_report.json | ./parse.js -o GL-report.2.json >/dev/null && diff -q GL-report.2.json test/snapshot/GL-report.2.json && echo success!; RC=$?; rm GL-report.2.json; exit $RC"
   },
   "repository": {
     "type": "git",
