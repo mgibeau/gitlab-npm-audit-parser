@@ -1,6 +1,6 @@
 {
   "name": "@elpete/gitlab-npm-audit-parser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "NPM Audit parser for GitLab dependency scanning",
   "bin": "parse.js",
   "main": "parse.js",
