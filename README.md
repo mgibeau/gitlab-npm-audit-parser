@@ -15,7 +15,7 @@ Options:
 Install this package.
 
 ```
-npm install --save-dev gitlab-npm-audit-parser
+npm install --save-dev @elpete/gitlab-npm-audit-parser
 ```
 
 Add the following job to _.gitlab-ci.yml_
@@ -30,7 +30,16 @@ dependency scanning:
     reports:
       dependency_scanning: gl-dependency-scanning.json
 ```
+NOTE: If you use a `npm run-script` to call `npm audit` You must add the option `--silent` to `npm run` or have `.npmrc` set the NPM loglevel to silent otherwise the shell output will conflict with the stdin piping to this parser and cause an error.
 
 ## Test
 
-`cat test/juice-shop.json | ./parse.js -o report.json`
+```sh
+$ npm test
+```
+
+### V1 Report
+`cat test/v1_report.json | ./parse.js -o report.json`
+
+### V2 Report
+`cat test/v2_report.json | ./parse.js -o report.json`

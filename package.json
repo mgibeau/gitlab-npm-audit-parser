@@ -1,6 +1,6 @@
 {
-  "name": "gitlab-npm-audit-parser",
-  "version": "1.0.4",
+  "name": "@elpete/gitlab-npm-audit-parser",
+  "version": "1.1.1",
   "description": "NPM Audit parser for GitLab dependency scanning",
   "bin": "parse.js",
   "main": "parse.js",
@@ -8,16 +8,30 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run --silent test:v1; npm run --silent test:v2;",
+    "test:v1": "printf 'v1: '; cat test/v1_report.json | ./parse.js -o GL-report.1.json >/dev/null && diff -q GL-report.1.json test/snapshot/GL-report.1.json && echo success!; RC=$?; rm GL-report.1.json; exit $RC",
+    "test:v2": "printf 'v2: '; cat test/v2_report.json | ./parse.js -o GL-report.2.json >/dev/null && diff -q GL-report.2.json test/snapshot/GL-report.2.json && echo success!; RC=$?; rm GL-report.2.json; exit $RC"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mgibeau/gitlab-npm-audit-parser.git"
+    "url": "git@github.com:elpete/gitlab-npm-audit-parser.git"
   },
   "keywords": [
     "gitlab"
   ],
   "author": "Maxime Gibeau",
+  "contributors": [
+    {
+      "name": "Eric Peterson",
+      "email": "eric@elpete.com",
+      "url": "https://github.com/elpete"
+    },
+    {
+      "name": "codejedi365",
+      "email": "codejedi365@gmail.com",
+      "url": "https://github.com/codejedi365"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "commander": "^2.18.0"
